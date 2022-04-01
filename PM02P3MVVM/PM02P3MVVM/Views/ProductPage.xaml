@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PM02P3MVVM.ViewModels"
+             xmlns:model="clr-namespace:PM02P3MVVM.Models"
+             x:Class="PM02P3MVVM.Views.ProductPage">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddProductComand}"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <RefreshView x:DataType="local:ProductViewModel"
+                         Command="{Binding LoadProductCommand}"
+                         IsRefreshing="{Binding IsBusy}">
+                <CollectionView
+                    ItemsSource="{Binding ProductInfos}"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:DataType="model:ProductInfo">
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Delete" BackgroundColor="Red"
+                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProductViewModel}}, Path=ProductTappedDelete}"
+                                                       CommandParameter="{Binding .}"/>
+                                            <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green" />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+
+                                    <Grid Padding="5">
+                                        <Frame CornerRadius="10" HasShadow="True">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Grid.RowSpan="2" Source="xamlogo.png" Aspect="AspectFill" HeightRequest="70" WidthRequest="80" Margin="0,0,10,0"></Image>
+                                                <StackLayout VerticalOptions="CenterAndExpand">
+                                                    <Label Grid.Column="1" Text="{Binding ProductName}" FontAttributes="Bold"></Label>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" VerticalOptions="End"></Label>
+                                                </StackLayout>
+                                                <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                                    <Image Source="edit.png" Grid.Column="3" WidthRequest="30" HeightRequest="30" VerticalOptions="End">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" 
+                                                                                  Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProductViewModel}}, Path=ProductTappedEdit}"
+                                                                                  CommandParameter="{Binding .}"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </SwipeView>
+                            </StackLayout>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
