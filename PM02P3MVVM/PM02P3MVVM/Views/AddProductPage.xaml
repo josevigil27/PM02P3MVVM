@@ -10,15 +10,24 @@
     <ContentPage.Content>
         <StackLayout Spacing="5" Padding="15">
 
-            <Label Text="Name" FontSize="Medium" />
-            <Entry Text="{Binding ProductInfo.ProductName, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Nombre:" FontSize="Medium" />
+            <Entry Text="{Binding ProductInfo.Nombre, Mode=TwoWay}" FontSize="Medium" />
 
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding ProductInfo.Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+            <Label Text="Apellido:" FontSize="Medium" />
+            <Editor Text="{Binding ProductInfo.Apellido, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+
+            <Label Text="Edad:" FontSize="Medium" />
+            <Editor Text="{Binding ProductInfo.Edad, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+
+            <Label Text="Direccion:" FontSize="Medium" />
+            <Editor Text="{Binding ProductInfo.Direccion, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+
+            <Label Text="Puesto:" FontSize="Medium" />
+            <Editor Text="{Binding ProductInfo.Puesto, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
 
             <StackLayout Orientation="Horizontal">
-                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
-                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Guardar" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Cancelar" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

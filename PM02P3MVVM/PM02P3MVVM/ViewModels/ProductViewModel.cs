@@ -73,7 +73,7 @@ namespace PM02P3MVVM.ViewModels
                 return;
             }
 
-            await App.ProductService.DeleteProductAsync(prod.ProductId);
+            await App.ProductService.DeleteProductAsync(prod.Id);
             await ExecuteLoadProductCommand();
         }
     }

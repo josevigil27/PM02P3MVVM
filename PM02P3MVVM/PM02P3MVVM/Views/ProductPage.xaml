@@ -6,7 +6,7 @@
              x:Class="PM02P3MVVM.Views.ProductPage">
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddProductComand}"/>
+        <ToolbarItem Text="Agregar" Command="{Binding AddProductComand}"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
@@ -35,8 +35,11 @@
                                             <StackLayout Orientation="Horizontal">
                                                 <Image Grid.RowSpan="2" Source="xamlogo.png" Aspect="AspectFill" HeightRequest="70" WidthRequest="80" Margin="0,0,10,0"></Image>
                                                 <StackLayout VerticalOptions="CenterAndExpand">
-                                                    <Label Grid.Column="1" Text="{Binding ProductName}" FontAttributes="Bold"></Label>
-                                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" VerticalOptions="End"></Label>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Grid.Column="1" Text="{Binding Nombre}" FontAttributes="Bold"></Label>
+                                                        <Label Grid.Column="2" Text="{Binding Apellido}" FontAttributes="Bold"></Label>
+                                                    </StackLayout>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Puesto}" VerticalOptions="End"></Label>
                                                 </StackLayout>
                                                 <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
                                                     <Image Source="edit.png" Grid.Column="3" WidthRequest="30" HeightRequest="30" VerticalOptions="End">

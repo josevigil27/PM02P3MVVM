@@ -24,7 +24,7 @@ namespace PM02P3MVVM.Services
 
         public async Task<bool> AddProductAsync(ProductInfo productInfo)
         {
-            if(productInfo.ProductId > 0)
+            if(productInfo.Id > 0)
             {
                 await _database.UpdateAsync(productInfo);
             }
@@ -45,7 +45,7 @@ namespace PM02P3MVVM.Services
         public async Task<ProductInfo> GetProductAsync(int id)
         {
             return await _database.Table<ProductInfo>()
-                .Where(p => p.ProductId == id)
+                .Where(p => p.Id == id)
                 .FirstOrDefaultAsync();
         }
 
